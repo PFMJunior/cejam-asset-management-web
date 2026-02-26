@@ -1,11 +1,12 @@
-'use client'
-import { Asset } from '../types/asset';
+'use client';
+
+import { Asset } from '@/types/asset';
 import React, { useState } from 'react';
 
 const mockAssets: Asset[] = [
-  { id: 1, name: 'Monitor Dell',   code: 'MON‑001', status: 'Disponível' },
-  { id: 2, name: 'Teclado Logitech', code: 'TEC‑002', status: 'Em uso' },
-  { id: 3, name: 'Projetor Epson', code: 'PROJ‑003', status: 'Disponível' },
+  { id: 1, name: 'Monitor Dell', code: 'MON-001', status: 'Disponível' },
+  { id: 2, name: 'Teclado Logitech', code: 'TEC-002', status: 'Em uso' },
+  { id: 3, name: 'Projetor Epson', code: 'PROJ-003', status: 'Disponível' },
 ];
 
 export default function AssetList() {
