@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import Header from '@/components/Header';
+import { Toaster } from 'react-hot-toast';
 
 export const metadata: Metadata = {
   title: 'Controle de Ativos',
@@ -19,6 +20,7 @@ export default function RootLayout({
           <Header />
           <main className="flex-1 max-w-7xl mx-auto w-full px-4 py-8">
             {children}
+            <Toaster />
           </main>
         </div>
       </body>
