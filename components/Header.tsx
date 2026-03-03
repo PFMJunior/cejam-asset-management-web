@@ -1,9 +1,8 @@
 import Link from 'next/link';
-import React from 'react';
 
 export default function Header() {
   return (
-    <header className="bg-gray-800 text-white shadow-lg">
+    <header className="sticky top-0 bg-gray-800 text-white shadow-lg">
       <div className="max-w-7xl mx-auto px-4 py-6">
         <h1 className="text-3xl font-bold mb-4">Controle de Ativos</h1>
         <nav>
@@ -14,8 +13,13 @@ export default function Header() {
               </Link>
             </li>
             <li>
-              <Link href="/assets" className="hover:text-gray-300 transition">
-                Ativos
+              <Link href="/cadastro" className="hover:text-gray-300 transition">
+                Cadastrar Ativo
+              </Link>
+            </li>
+            <li>
+              <Link href="/movimentacoes" className="hover:text-gray-300 transition">
+                Movimentações
               </Link>
             </li>
           </ul>
