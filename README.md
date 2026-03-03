@@ -1,109 +1,138 @@
-# Cejam Asset Management (Front-end)
+# 🏢 Cejam Asset Management (Front-end)
 
-Aplicão web para gerenciamento interno de equipamentos compartilhados (monitores, teclados, projetores etc.).
-Parte do projeto full-stack, o código do backend (.NET) está disponível em:
-https://github.com/PFMJunior/CejamAssetManagement
+Projeto desenvolvido como parte de um desafio técnico Full Stack, com foco na construção de uma interface moderna, responsiva e funcional para gerenciamento de ativos internos (monitores, teclados, projetores, etc.).
 
-Esta interface consome a API via NEXT_PUBLIC_API_SOURCE_URL.
+A aplicação consome uma API backend em .NET, disponível publicamente no GitHub, utilizando a variável de ambiente **NEXT_PUBLIC_API_SOURCE_URL**.
 
----
+## 🔗 Backend (API)
 
-**Demonstra��o das principais funcionalidades**
+A API responsável pelas regras de negócio e persistência de dados está disponível em:
 
-- Cadastro de ativo com nome, código e status.
-- Listagem responsiva mostrando estados  Dispon�vel ou Em Uso.
-- Empréstimo/devolução atravás de modal com resumo de ação.
-- Exclusão de ativo com confirmação.
-- Histórico de movimentações exibindo empréstimos e devoluções.
+👉 https://github.com/PFMJunior/CejamAssetManagement
 
----
+### Tecnologias do backend:
+* .NET
+* Entity Framework
+* SQLite
+* Arquitetura baseada em Use Cases
 
-**Tecnologias utilizadas**
+## 🚀 Demonstração
 
-- Next.js 14 (App Router)
-- TypeScript
-- Tailwind CSS
-- React Hook Form
-- React Hot Toast
-- Fetch API (client-side)
+* Interface moderna e intuitiva contendo:
+* Listagem de ativos
+* Cadastro de novos equipamentos
+* Controle de empréstimo e devolução
+* Exclusão com confirmação
+* Histórico de movimentações
+* Layout totalmente responsivo
 
----
+## ⚙️ Tecnologias utilizadas
 
-**Estrutura do projeto**
+* Next.js 14 (App Router)
+* TypeScript
+* Tailwind CSS
+* React Hook Form
+* React Hot Toast
+* Fetch API (client-side)
+* Integração com API .NET
 
-`
-/app                   # rotas e páginas Next.js
-    page.tsx           # lista de ativos
-    cadastro/page.tsx  # página de cadastro
-    movimentacoes/     # histórico de movimentações
-/components            # componentes React reutilizáveis
-/services              # cliente HTTP para a API
-/types                 # tipos TypeScript compartilhados
-/utils                 # utilitários (cores, constantes)
-/public                # arquivos estáticos (imagens, logos)
-`
+## 📁 Estrutura do projeto
 
----
+```bash
+CEJAM-ASSET-MANAGEMENT/
+├── app/
+│   ├── page.tsx              # Listagem de ativos
+│   ├── cadastro/
+│   │   └── page.tsx          # Página de cadastro
+│   └── movimentacoes/
+│       └── page.tsx          # Histórico de movimentações
+├── components/               # Componentes React reutilizáveis
+├── services/                 # Cliente HTTP e integração com API
+├── types/                    # Tipos TypeScript compartilhados
+├── utils/                    # Constantes e utilitários
+├── public/                   # Arquivos estáticos
+└── package.json
+```
 
-**Como executar**
+## ▶️ Como executar o projeto
+### ⚠️ Atenção
 
-> O front depende de um backend (não incluído aqui). Configure NEXT_PUBLIC_API_SOURCE_URL antes de iniciar.
+Antes de iniciar, é necessário configurar a variável de ambiente apontando para a API backend:
+* NEXT_PUBLIC_API_SOURCE_URL=http://localhost:5000
+
+## Passo a passo
 
 1. Instale as dependências:
-   `ash
-   npm install  # ou yarn install
-   `
-2. Defina as variáveis de ambiente:
-   `env
-   NEXT_PUBLIC_API_SOURCE_URL=https://api.exemplo.com
-   `
-3. Inicie em modo desenvolvimento:
-   `ash
-   npm run dev
-   `
-4. Acesse http://localhost:3000.
+```bash
+npm install
+```
+2. Configure o arquivo .env.local:
+```bash
+NEXT_PUBLIC_API_SOURCE_URL=http://localhost:5000
+```
+3. Execute o projeto:
+```bash
+npm run dev
+```
+4. Acesse:
+```bash
+http://localhost:3000
+```
 
-Outros scripts úteis:
+## 🔎 Funcionalidades
+### 🗂️ Gestão de Ativos
 
-| Comando | Descrição |
-|---------|-----------|
-| 
-pm run build | Gera build de produção |
-| 
-pm start | Executa build |
-| 
-pm run lint | Verifica linting |
-| 
-pm run format | Formata com Prettier |
+Permite:
+* Cadastro de ativo com nome, código de identificação e status
+* Visualização de ativos como:
+* ✅ Disponível
+* 🔄 Em uso
+* Exclusão com confirmação
 
----
+## 🔄 Controle de Movimentações
 
-**Principais funcionalidades detalhadas**
+* Registro de empréstimos
+* Registro de devoluções
+* Modal com resumo da ação
+* Atualização automática do status
+* Histórico completo de movimentações
 
-- **Cadastro**         : validações de campos e dependência de status/usuário.
-- **Listagem**         : tabela com estilos adaptativos e ações de editar/remover.
-- **Modal de edição**: controla empréstimo/devolução e comentários.
-- **Movimentações**    : histórico completo com datas e status.
-- **Caminho de dados** : serviços em /services centralizam fetchs e tratamento de erros.
+## 📱 Responsividade
 
----
+* Layout adaptável para desktop, tablet e mobile
+* Tabelas com scroll horizontal quando necessário
+* Modais ajustados dinamicamente
 
-**Responsividade e UX**
+## 🧠 Arquitetura
 
-O layout funciona em desktop, tablet e mobile. Classes Tailwind garantem
-scroll horizontal em tabelas estreitas e modais são dimensionados automaticamente.
+* Separação clara entre:
+* UI (components)
+* Serviços (services)
+* Tipagens (types)
+* Componentização reutilizável
+* Estado gerenciado com hooks padrão do React
+* Tipagem forte com TypeScript
+* Integração desacoplada via variável de ambiente
+* Estrutura organizada seguindo boas práticas do App Router
 
----
+## 📦 Scripts disponíveis
+Comando	Descrição
 
-**Arquitetura**
+```bash
+npm run dev	Inicia em modo desenvolvimento
+```
+```bash
+npm run build	Gera build de produção
+```
+```bash
+npm start	Executa build
+```
+```bash
+npm run lint	Verifica linting
+```
+```bash
+npm run format	Formata com Prettier
+```
+## 👨‍💻 Autor
 
-- Separação clara entre UI, serviços e tipos.
-- Componentes pequenos e reutilizáveis.
-- Estado local gerenciado com hooks padrão.
-- Tipagens TypeScript cobrindo todas as props e payloads.
-
----
-
-**Autor**
-
-Desenvolvido por Paulo Montefusco.
+* Desenvolvido por Paulo Montefusco
