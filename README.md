@@ -1,36 +1,109 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Cejam Asset Management (Front-end)
 
-## Getting Started
+Aplicão web para gerenciamento interno de equipamentos compartilhados (monitores, teclados, projetores etc.).
+Parte do projeto full-stack, o código do backend (.NET) está disponível em:
+https://github.com/PFMJunior/CejamAssetManagement
 
-First, run the development server:
+Esta interface consome a API via NEXT_PUBLIC_API_SOURCE_URL.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**Demonstra��o das principais funcionalidades**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Cadastro de ativo com nome, código e status.
+- Listagem responsiva mostrando estados  Dispon�vel ou Em Uso.
+- Empréstimo/devolução atravás de modal com resumo de ação.
+- Exclusão de ativo com confirmação.
+- Histórico de movimentações exibindo empréstimos e devoluções.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+**Tecnologias utilizadas**
 
-To learn more about Next.js, take a look at the following resources:
+- Next.js 14 (App Router)
+- TypeScript
+- Tailwind CSS
+- React Hook Form
+- React Hot Toast
+- Fetch API (client-side)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**Estrutura do projeto**
 
-## Deploy on Vercel
+`
+/app                   # rotas e páginas Next.js
+    page.tsx           # lista de ativos
+    cadastro/page.tsx  # página de cadastro
+    movimentacoes/     # histórico de movimentações
+/components            # componentes React reutilizáveis
+/services              # cliente HTTP para a API
+/types                 # tipos TypeScript compartilhados
+/utils                 # utilitários (cores, constantes)
+/public                # arquivos estáticos (imagens, logos)
+`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Como executar**
+
+> O front depende de um backend (não incluído aqui). Configure NEXT_PUBLIC_API_SOURCE_URL antes de iniciar.
+
+1. Instale as dependências:
+   `ash
+   npm install  # ou yarn install
+   `
+2. Defina as variáveis de ambiente:
+   `env
+   NEXT_PUBLIC_API_SOURCE_URL=https://api.exemplo.com
+   `
+3. Inicie em modo desenvolvimento:
+   `ash
+   npm run dev
+   `
+4. Acesse http://localhost:3000.
+
+Outros scripts úteis:
+
+| Comando | Descrição |
+|---------|-----------|
+| 
+pm run build | Gera build de produção |
+| 
+pm start | Executa build |
+| 
+pm run lint | Verifica linting |
+| 
+pm run format | Formata com Prettier |
+
+---
+
+**Principais funcionalidades detalhadas**
+
+- **Cadastro**         : validações de campos e dependência de status/usuário.
+- **Listagem**         : tabela com estilos adaptativos e ações de editar/remover.
+- **Modal de edição**: controla empréstimo/devolução e comentários.
+- **Movimentações**    : histórico completo com datas e status.
+- **Caminho de dados** : serviços em /services centralizam fetchs e tratamento de erros.
+
+---
+
+**Responsividade e UX**
+
+O layout funciona em desktop, tablet e mobile. Classes Tailwind garantem
+scroll horizontal em tabelas estreitas e modais são dimensionados automaticamente.
+
+---
+
+**Arquitetura**
+
+- Separação clara entre UI, serviços e tipos.
+- Componentes pequenos e reutilizáveis.
+- Estado local gerenciado com hooks padrão.
+- Tipagens TypeScript cobrindo todas as props e payloads.
+
+---
+
+**Autor**
+
+Desenvolvido por Paulo Montefusco.
