@@ -1,44 +1,136 @@
 # 🏢 Cejam Asset Management (Front-end)
 
-Projeto desenvolvido como parte de um desafio técnico Full Stack, com foco na construção de uma interface moderna, responsiva e funcional para gerenciamento de ativos internos (monitores, teclados, projetores, etc.).
+## 📌 Sobre o projeto
 
-A aplicação consome uma API backend em .NET, disponível publicamente no GitHub, utilizando a variável de ambiente **NEXT_PUBLIC_API_SOURCE_URL**.
+Projeto desenvolvido como parte de um **desafio técnico Full Stack**, com foco na construção de uma interface moderna, responsiva e funcional para **gerenciamento de ativos internos** (monitores, teclados, projetores, etc.).
 
-## 🔗 Backend (API)
+A aplicação consome uma **API backend em .NET**, disponível publicamente no GitHub, utilizando a variável de ambiente:
+
+```
+NEXT_PUBLIC_API_SOURCE_URL
+```
+
+Essa abordagem permite desacoplar o frontend do backend, facilitando a configuração para diferentes ambientes.
+
+---
+
+# 🔗 Backend (API)
 
 A API responsável pelas regras de negócio e persistência de dados está disponível em:
 
 👉 https://github.com/PFMJunior/CejamAssetManagement
 
-### Tecnologias do backend:
+### Tecnologias do backend
+
 * .NET
 * Entity Framework
 * SQLite
 * Arquitetura baseada em Use Cases
 
-## 🚀 Demonstração
+---
 
-* Interface moderna e intuitiva contendo:
-* Listagem de ativos
-* Cadastro de novos equipamentos
-* Controle de empréstimo e devolução
-* Exclusão com confirmação
-* Histórico de movimentações
-* Layout totalmente responsivo
+# 🔌 Como conectar com o Backend
 
-## ⚙️ Tecnologias utilizadas
+Este projeto consome a API disponível no repositório acima.
 
-* Next.js 14 (App Router)
-* TypeScript
-* Tailwind CSS
-* React Hook Form
-* React Hot Toast
-* Fetch API (client-side)
-* Integração com API .NET
+### 1️⃣ Executar o backend
 
-## 📁 Estrutura do projeto
+Clone o repositório da API:
 
-```bash
+```
+git clone https://github.com/PFMJunior/CejamAssetManagement
+```
+
+Entre na pasta do projeto:
+
+```
+cd CejamAssetManagement
+```
+
+Execute a aplicação:
+
+```
+dotnet run
+```
+
+A API será iniciada em algo semelhante a:
+
+```
+http://localhost:{porta}
+```
+
+A porta utilizada pode variar dependendo da configuração do ambiente ou do arquivo `launchSettings.json`.
+
+---
+
+# ⚙️ Configuração do Frontend
+
+No projeto frontend, crie o arquivo:
+
+```
+.env.local
+```
+
+E configure a URL da API:
+
+```
+NEXT_PUBLIC_API_SOURCE_URL=http://localhost:{porta}
+```
+
+Substitua `{porta}` pela porta em que a API estiver rodando.
+
+---
+
+# ▶️ Como executar o Frontend
+
+### 1️⃣ Instalar dependências
+
+```
+npm install
+```
+
+### 2️⃣ Iniciar aplicação
+
+```
+npm run dev
+```
+
+### 3️⃣ Acessar aplicação
+
+```
+http://localhost:3000
+```
+
+---
+
+# 🚀 Funcionalidades principais
+
+A aplicação permite:
+
+* 📦 **Listagem de ativos**
+* ➕ **Cadastro de novos equipamentos**
+* 🔄 **Controle de empréstimo e devolução**
+* 🗑️ **Exclusão com confirmação**
+* 📜 **Histórico completo de movimentações**
+* 📱 **Interface totalmente responsiva**
+
+---
+
+# ⚙️ Tecnologias utilizadas
+
+* **Next.js 14** (App Router)
+* **TypeScript**
+* **Tailwind CSS**
+* **React Hook Form**
+* **React Hot Toast**
+* **Fetch API**
+* Integração com **API .NET**
+
+---
+
+# 📁 Estrutura do projeto
+
+```
 CEJAM-ASSET-MANAGEMENT/
 ├── app/
 │   ├── page.tsx              # Listagem de ativos
@@ -47,92 +139,70 @@ CEJAM-ASSET-MANAGEMENT/
 │   └── movimentacoes/
 │       └── page.tsx          # Histórico de movimentações
 ├── components/               # Componentes React reutilizáveis
-├── services/                 # Cliente HTTP e integração com API
-├── types/                    # Tipos TypeScript compartilhados
+├── services/                 # Integração com API
+├── types/                    # Tipos TypeScript
 ├── utils/                    # Constantes e utilitários
 ├── public/                   # Arquivos estáticos
 └── package.json
 ```
 
-## ▶️ Como executar o projeto
-### ⚠️ Atenção
+---
 
-Antes de iniciar, é necessário configurar a variável de ambiente apontando para a API backend:
-* NEXT_PUBLIC_API_SOURCE_URL=http://localhost:5000
+# 🧠 Arquitetura
 
-## Passo a passo
+O projeto segue uma organização baseada em responsabilidades:
 
-1. Instale as dependências:
-```bash
-npm install
-```
-2. Configure o arquivo .env.local:
-```bash
-NEXT_PUBLIC_API_SOURCE_URL=http://localhost:5000
-```
-3. Execute o projeto:
-```bash
-npm run dev
-```
-4. Acesse:
-```bash
-http://localhost:3000
-```
+**UI Layer**
 
-## 🔎 Funcionalidades
-### 🗂️ Gestão de Ativos
+* Componentes React reutilizáveis (`components`)
 
-Permite:
-* Cadastro de ativo com nome, código de identificação e status
-* Visualização de ativos como:
-* ✅ Disponível
-* 🔄 Em uso
-* Exclusão com confirmação
+**Service Layer**
 
-## 🔄 Controle de Movimentações
+* Comunicação com a API (`services`)
 
-* Registro de empréstimos
-* Registro de devoluções
-* Modal com resumo da ação
-* Atualização automática do status
-* Histórico completo de movimentações
+**Types Layer**
 
-## 📱 Responsividade
+* Tipagens TypeScript compartilhadas (`types`)
 
-* Layout adaptável para desktop, tablet e mobile
-* Tabelas com scroll horizontal quando necessário
-* Modais ajustados dinamicamente
+**Utilities**
 
-## 🧠 Arquitetura
+* Constantes e helpers (`utils`)
 
-* Separação clara entre:
-* UI (components)
-* Serviços (services)
-* Tipagens (types)
-* Componentização reutilizável
-* Estado gerenciado com hooks padrão do React
-* Tipagem forte com TypeScript
-* Integração desacoplada via variável de ambiente
-* Estrutura organizada seguindo boas práticas do App Router
+A comunicação com o backend é feita através da **Fetch API**, utilizando uma **URL base configurada via variável de ambiente**.
 
-## 📦 Scripts disponíveis
-Comando	Descrição
+---
 
-```bash
-npm run dev	Inicia em modo desenvolvimento
-```
-```bash
-npm run build	Gera build de produção
-```
-```bash
-npm start	Executa build
-```
-```bash
-npm run lint	Verifica linting
-```
-```bash
-npm run format	Formata com Prettier
-```
-## 👨‍💻 Autor
+# 📱 Responsividade
 
-* Desenvolvido por Paulo Montefusco
+A interface foi construída com foco em adaptação para diferentes dispositivos:
+
+* Desktop
+* Tablet
+* Mobile
+
+Inclui:
+
+* tabelas com scroll horizontal
+* modais responsivos
+* layout flexível
+
+---
+
+# 📦 Scripts disponíveis
+
+| Comando        | Descrição                                |
+| -------------- | ---------------------------------------- |
+| npm run dev    | Inicia o projeto em modo desenvolvimento |
+| npm run build  | Gera build de produção                   |
+| npm start      | Executa a aplicação em modo produção     |
+| npm run lint   | Verifica problemas de lint               |
+| npm run format | Formata código com Prettier              |
+
+---
+
+# 👨‍💻 Autor
+
+Desenvolvido por **Paulo Montefusco**
+
+🔗 LinkedIn
+https://www.linkedin.com/in/paulo-montefusco/
